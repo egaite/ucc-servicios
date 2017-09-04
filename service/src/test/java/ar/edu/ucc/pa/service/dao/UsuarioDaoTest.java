@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -55,7 +56,7 @@ public class UsuarioDaoTest {
 		List<Usuario> clientes = usuarioDao.getAll();
 		log.info("Size: " + clientes.size());
 
-		assertEquals(1, clientes.size());
+		Assert.assertEquals(1, clientes.size());
 		log.info("finishing getUsuarios DAO Test ..... ");
 	}
 
