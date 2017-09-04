@@ -38,4 +38,12 @@ public class TelefonoDaoTest {
 		assertEquals(1, telefono.getNumero());
 	}
 	
+	
+	@Transactional
+	@Test
+	public void testEdu() {
+
+		telDao.load(new Long(2));
+	}
+	
 }

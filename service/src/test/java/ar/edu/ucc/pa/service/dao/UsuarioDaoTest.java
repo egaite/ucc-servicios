@@ -35,7 +35,7 @@ public class UsuarioDaoTest {
 		usuarioTest.setNombre("Nombre Test");
 		usuarioTest.setDocumento("111111111");
 		usuarioTest.setEmail("test@gmail.com");
-		usuarioTest.setTipoDocumento(TipoDocumento.DNI);
+		usuarioTest.setTipoDocumento(TipoDocumento.PASAPORTE);
 	}
 
 	@Transactional

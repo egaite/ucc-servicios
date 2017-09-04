@@ -17,4 +17,11 @@ public class TelefonoDao extends GenericDaoImp<Telefono, Long> implements ITelef
 		
 		return this.getByProperties(properties).get(0);
 	}
+
+	@Override
+	public Telefono load(Long key) {
+		// TODO Auto-generated method stub
+		System.out.println("Sobrescritura");
+		return null;
+	}	
 }
