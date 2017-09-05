@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name="TELEFONO")
 public class Telefono extends GenericObject {
 	
-	@Column(name="NUMERO", length=30, nullable=false)
+	@Column(name="NUMERO", length=30, nullable=false, unique=true)
 	private String numero;
 	
 	@Column(name="SALDO", nullable=false)

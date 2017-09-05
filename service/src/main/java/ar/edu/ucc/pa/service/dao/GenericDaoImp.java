@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -19,6 +20,7 @@ import javax.persistence.criteria.Root;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -86,6 +88,7 @@ public abstract class GenericDaoImp<E, ID extends Serializable> implements Gener
 
 		TypedQuery<E> query = currentSession().createQuery(queryByProperties);
 		
+		
 		Set<String> keySet = properties.keySet();
 		for (String key : keySet) {
 			Object value = properties.get(key);
@@ -114,6 +117,32 @@ public abstract class GenericDaoImp<E, ID extends Serializable> implements Gener
 		}
 		cq = cq.where(cb.and(predicateList.toArray(new Predicate[predicateList.size()])));
 		return cq;
+	}
+	
+	
+	protected List<E> executeQuery(String hql) {
+		
+		Query query = currentSession().createQuery(hql);
+		
+		@SuppressWarnings("unchecked")
+		List<E> list = query.getResultList();
+		 
+		
+		return list;
+	}
+	
+	protected List<E> executeQuery(String hql, Map<String, Object> hqlParameters) {
+		
+		Query query = currentSession().createQuery(hql);
+		
+		for (String key : hqlParameters.keySet()) {
+		  query.setParameter(key, hqlParameters.get(key));
+		}
+		
+		@SuppressWarnings("unchecked")
+		List<E> list = query.getResultList();
+		 
+		return list;
 	}
 
 }

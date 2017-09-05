@@ -28,6 +28,9 @@
     ) ENGINE=InnoDB;
 
     alter table TELEFONO 
+        add constraint UK_g3quh3ibi2798cybhlpnqg7r unique (NUMERO);
+
+    alter table TELEFONO 
         add constraint FK2rlspqt0957wwoj9t89potkul 
         foreign key (USUARIO_ID) 
         references USUARIO (ID);

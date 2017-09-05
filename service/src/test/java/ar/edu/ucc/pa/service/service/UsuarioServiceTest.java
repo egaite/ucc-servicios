@@ -44,7 +44,7 @@ public class UsuarioServiceTest {
 	public void agregarUsuario() {
 		log.info("Starting insert Service Test .... ");
 		usuarioDto = usuarioService.agregarUsuario(usuarioDto);
-		
+		log.info("ID" + usuarioDto.getId());
 		Assert.assertNotNull(usuarioDto.getId());
 	}
 	

@@ -3,6 +3,7 @@ package ar.edu.ucc.pa.service.dao;
 import static org.junit.Assert.assertEquals;
 
 import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,15 +36,18 @@ public class TelefonoDaoTest {
 		
 		Telefono telefono = telDao.getTelefonoByNumber("34567777");
 		
-		assertEquals(1, telefono.getNumero());
+		Assert.assertNull(telefono.getId());
 	}
-	
 	
 	@Transactional
 	@Test
-	public void testEdu() {
+	public void getTelefonoByNumberHql() {
 
-		telDao.load(new Long(2));
+		log.info("Starting Telefono DAO Test .... ");
+		
+		Telefono telefono = telDao.getTelefonoByNumberHql("34567777");
+		
+		Assert.assertNull(telefono.getId());
 	}
 	
 }
