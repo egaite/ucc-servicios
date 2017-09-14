@@ -12,7 +12,7 @@ public class MappingUtils {
 
 			modelMapper = new ModelMapper();
 			modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STANDARD);
-
+			
 		} catch (Throwable t) {
 			t.printStackTrace();
 		}
@@ -21,5 +21,8 @@ public class MappingUtils {
 	public static <T> T translate(Object source, Class<T> target) {
 		return modelMapper.map(source, target);
 	}
-
+	
+	public static void translate(Object source, Object destination) {
+		modelMapper.map(source, destination);
+	}
 }

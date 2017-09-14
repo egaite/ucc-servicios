@@ -86,5 +86,10 @@ public class Usuario extends GenericObject {
 
 	public void setTipoDocumento(TipoDocumento tipoDocumento) {
 		this.tipoDocumento = tipoDocumento;
-	}	
+	}
+
+
+
+	
+	
 }

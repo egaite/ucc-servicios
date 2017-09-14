@@ -59,7 +59,7 @@ public abstract class GenericDaoImp<E, ID extends Serializable> implements Gener
 	}
 
 	public void update(E entity) {
-		currentSession().saveOrUpdate(entity);
+		currentSession().update(entity);
 	}
 
 	public void merge(E entity) {

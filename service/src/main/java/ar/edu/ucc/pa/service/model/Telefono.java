@@ -8,15 +8,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TELEFONO")
+@Table(name = "TELEFONO")
 public class Telefono extends GenericObject {
-	
-	@Column(name="NUMERO", length=30, nullable=false, unique=true)
+
+	@Column(name = "NUMERO", length = 30, nullable = false, unique = true)
 	private String numero;
-	
-	@Column(name="SALDO", nullable=false)
+
+	@Column(name = "SALDO", nullable = false)
 	private Double saldo;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USUARIO_ID", nullable = false)
 	private Usuario usuario;
@@ -44,5 +44,5 @@ public class Telefono extends GenericObject {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
 }
