@@ -1,5 +1,8 @@
 package ar.edu.ucc.pa.service.controller;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ar.edu.ucc.pa.service.dto.UsuarioDto;
+import ar.edu.ucc.pa.service.exceptions.BadRequestException;
 import ar.edu.ucc.pa.service.service.UsuarioService;
 
 @Controller
@@ -30,6 +34,21 @@ public class UsuarioController {
 	public ResponseEntity<?> 
 	searchUser(@RequestParam(name = "id", required = true) Long id)
 			throws Exception {
+		
+		Calendar calendar = Calendar.getInstance();
+	    calendar.add(Calendar.DAY_OF_YEAR, -2); 
+	    Date fechaMenor = calendar.getTime();
+	    
+		Date fechaActual = Calendar.getInstance().getTime();
+		
+		log.info("Fecha: " + fechaActual);
+		log.info("Fecha Menor: " + fechaMenor);
+		
+		if (fechaActual.compareTo(fechaMenor)> 0){
+			throw new BadRequestException("0001", "Fecha Menor a la Actual");
+		}
+		
+		
 		log.info("/user/search?id=" + id);
 		UsuarioDto dto = usuarioService.buscarPorId(id);
 
